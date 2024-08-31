@@ -18,10 +18,13 @@ hospedes.Add(p3);
 Suite suite = new(tipoSuite: "Premium", capacidade: 3, valorDiaria: 300);
 
 // Cria uma nova reserva, passando a suíte e os hóspedes
-Reserva reserva = new(diasReservados: 10);
+Reserva reserva = new(diasReservados: 1);
 reserva.CadastrarSuite(suite);
 reserva.CadastrarHospedes(hospedes);
+string desconto = reserva.DiasReservados >= 10 ? "(com desconto de 10%)" : "(sem desconto)";
 
 // Exibe a quantidade de hóspedes e o valor da diária
-Console.WriteLine($"Número de Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-Console.WriteLine($"Valor total da diária: {reserva.CalcularValorDiaria().ToString("C")}");
+Console.WriteLine($"Número de hóspedes na Suíte {suite.TipoSuite}: {reserva.ObterQuantidadeHospedes()}");
+Console.WriteLine($"Valor da diária: {suite.ValorDiaria.ToString("C")}");
+Console.WriteLine($"Tempo da hospedagem: {reserva.DiasReservados}");
+Console.WriteLine($"Valor total da hospedagem: {reserva.CalcularValorDiaria().ToString("C")} {desconto}");
