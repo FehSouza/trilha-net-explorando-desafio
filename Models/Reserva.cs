@@ -9,8 +9,7 @@ namespace DesafioProjetoHospedagem.Models
 		public void CadastrarHospedes(List<Pessoa> hospedes)
 		{
 			bool temCapacidade = hospedes.Count <= Suite.Capacidade;
-
-			if (!!temCapacidade) Hospedes = hospedes;
+			if (temCapacidade) Hospedes = hospedes;
 			if (!temCapacidade) throw new Exception($"\nA capacidade da Suíte {Suite.TipoSuite} é menor que o número de hóspedes recebido. \nCapacidade da Suíte: {Suite.Capacidade} \nNúmero de hóspedes: {hospedes.Count}");
 		}
 
@@ -27,8 +26,8 @@ namespace DesafioProjetoHospedagem.Models
 
 		public decimal CalcularValorDiaria()
 		{
-			decimal valorDiaria = DiasReservados * Suite.ValorDiaria;
-			decimal valor = valorDiaria;
+			decimal valorHospedagem = DiasReservados * Suite.ValorDiaria;
+			decimal valor = valorHospedagem;
 
 			if (DiasReservados >= 10) valor *= 0.9M;
 			return valor;
